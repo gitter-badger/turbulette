@@ -18,6 +18,7 @@ from turbulette.conf.constants import (
 from turbulette.conf.exceptions import ImproperlyConfigured
 from turbulette.main import setup
 from turbulette.type import DatabaseSettings
+from turbulette.core.cache import cache
 
 
 def gino_starlette(settings: DatabaseSettings, dsn: URL):
@@ -57,6 +58,14 @@ def gino_starlette(settings: DatabaseSettings, dsn: URL):
         ) from error
     conf.db = database
     return database
+
+
+async def startup():
+    await cache.connect()
+
+
+async def shutdown():
+    await cache.disconnect()
 
 
 def turbulette_starlette(project_settings: str):
@@ -115,6 +124,8 @@ def turbulette_starlette(project_settings: str):
             debug=getattr(project_settings_module, "DEBUG"),
             routes=[Route(conf.settings.GRAPHQL_ENDPOINT, graphql_route)] + routes,
             middleware=middlewares,
+            on_startup=[startup],
+            on_shutdown=[shutdown],
         )
 
         conf.app = app

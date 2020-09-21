@@ -1,7 +1,7 @@
 from gino.json_support import ObjectProperty
 from sqlalchemy import Column, DateTime, Integer, ForeignKey
 from sqlalchemy.dialects.postgresql import JSONB
-from sqlalchemy.sql.sqltypes import String
+from sqlalchemy.sql.sqltypes import Float, String
 
 from turbulette.apps.auth.models import AbstractUser
 from turbulette.db import Model
@@ -22,6 +22,8 @@ class Book(Model):
     publication_date = Column(DateTime(), nullable=False)
     book_profile = Column(JSONB, nullable=False, server_default="{}")
     profile = ObjectProperty(prop_name="book_profile")
+    borrowings = Column(Integer, default=0)
+    price_bought = Column(Float)
 
 
 class Comics(Model):

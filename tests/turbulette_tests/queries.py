@@ -13,7 +13,6 @@ query_books = """
             books {
                 books {
                     title
-                    author
                 }
                 errors
             }
@@ -35,6 +34,41 @@ query_book = """
         }
     }
 """
+
+query_borrowings = """
+    query book($id: ID!) {
+        book(id: $id) {
+            book {
+                borrowings
+            }
+        }
+    }
+"""
+
+query_borrowings_price_bought = """
+    query books {
+        books {
+            books {
+                title
+                author
+                priceBought
+                borrowings
+            }
+        }
+    }
+"""
+
+query_comics = """
+    query comics {
+        comics {
+            comics {
+                author
+                artist
+            }
+        }
+    }
+"""
+
 
 query_exclusive_books = """
     query exclusiveBooks {
@@ -87,9 +121,13 @@ mutation_create_user = """
     }
 """
 
-mutation_borrow_books = """
-    mutation borrowBook {
-        borrowBook {
+mutation_borrow_book = """
+    mutation borrowBook(
+        $id: ID!
+    ) {
+        borrowBook(
+            id: $id
+        ) {
             success
             errors
         }
@@ -187,4 +225,12 @@ mutation_borrow_unlimited = """
             errors
         }
     }
+"""
+
+mutation_destroy_library = """
+mutation destroyLibrary {
+    destroyLibrary {
+        success
+    }
+}
 """

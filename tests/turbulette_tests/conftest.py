@@ -1,3 +1,4 @@
+from datetime import datetime
 from string import ascii_lowercase
 from typing import Any, Dict
 
@@ -19,6 +20,7 @@ from .constants import (
     DEFAULT_PASSWORD,
     STAFF_USERNAME,
     CUSTOMER_PERMISSION,
+    NO_ROLE_USERNAME,
 )
 from .queries import query_get_jwt
 
@@ -58,7 +60,7 @@ async def create_staff_user(turbulette_setup):
     role = await Role.create(name="admin")
     permission = await Permission.create(key="books:add", name="Can buy a product")
     await RolePermission.create(role=role.id, permission=permission.id)
-    await create_user(
+    return await create_user(
         username=STAFF_USERNAME,
         first_name="test",
         last_name="user",
@@ -116,3 +118,48 @@ async def create_user_data() -> Dict[str, Any]:
         "passwordOne": DEFAULT_PASSWORD,
         "passwordTwo": DEFAULT_PASSWORD,
     }
+
+
+@pytest.fixture(scope="session")
+async def create_book():
+    from tests.app_1.models import Book
+
+    book = await Book.create(
+        title="The Lord of the Rings",
+        author="J.R.R Tolkien",
+        publication_date=datetime(year=1999, month=7, day=20, hour=12, second=12),
+        profile={"genre": ["fantasy"], "awards": []},
+    )
+    return book
+
+
+@pytest.fixture(scope="session")
+async def create_user_no_role():
+    from turbulette.apps.auth.utils import create_user
+
+    user_no_role = await create_user(
+        username=NO_ROLE_USERNAME,
+        first_name="test",
+        last_name="user",
+        email=f"{NO_ROLE_USERNAME}@email.com",
+        password_one="1234",
+        password_two="1234",
+    )
+
+
+@pytest.fixture
+async def get_no_role_user_tokens(tester):
+    response = await tester.assert_query_success(
+        query=query_get_jwt,
+        variables={"username": NO_ROLE_USERNAME, "password": DEFAULT_PASSWORD},
+        op_name="getJWT",
+    )
+
+    assert response[1]["data"]["getJWT"]["accessToken"]
+    assert response[1]["data"]["getJWT"]["refreshToken"]
+    assert not response[1]["data"]["getJWT"]["errors"]
+
+    return (
+        response[1]["data"]["getJWT"]["accessToken"],
+        response[1]["data"]["getJWT"]["refreshToken"],
+    )

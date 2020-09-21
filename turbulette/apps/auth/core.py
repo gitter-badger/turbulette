@@ -4,20 +4,24 @@ from typing import Tuple
 
 from gino.declarative import Model
 from jwcrypto.jwk import JWK
-from jwcrypto.jws import InvalidJWSSignature, InvalidJWSObject
+from jwcrypto.jws import InvalidJWSObject, InvalidJWSSignature
 from passlib.context import CryptContext
 from python_jwt import generate_jwt, process_jwt, verify_jwt
 
 from turbulette.conf import settings
+from turbulette.core.cache import cache
 
 from .exceptions import (
-    JWTInvalidSignature,
     JWTDecodeError,
     JWTExpired,
-    JWTNoUsername,
     JWTInvalidPrefix,
+    JWTInvalidSignature,
     JWTNotFound,
+    JWTNoUsername,
 )
+from .models import Permission, Role, RolePermission, UserRole
+
+STAFF_SCOPE = "_staff"
 
 # Create crypto context
 pwd_context = CryptContext(schemes=[settings.HASH_ALGORITHM], deprecated="auto")
@@ -37,8 +41,10 @@ class TokenType(Enum):
     REFRESH = "refresh"
 
 
-def _jwt_payload(user_id: str) -> dict:
-    payload = {"sub": user_id}
+def _jwt_payload(user_id: str, scopes: list, is_staff: bool) -> dict:
+    if is_staff:
+        scopes.append(STAFF_SCOPE)
+    payload = {"sub": user_id, "scopes": scopes}
 
     if settings.JWT_AUDIENCE is not None:
         payload["aud"] = settings.JWT_AUDIENCE
@@ -49,21 +55,14 @@ def _jwt_payload(user_id: str) -> dict:
     return payload
 
 
-def jwt_payload(user: user_model) -> dict:
-    payload = {"sub": user.get_username()}
-
-    if settings.JWT_AUDIENCE is not None:
-        payload["aud"] = settings.JWT_AUDIENCE
-
-    if settings.JWT_ISSUER is not None:
-        payload["iss"] = settings.JWT_ISSUER
-
-    return payload
-    # return _jwt_payload(user.get_username())
+async def jwt_payload(user: user_model) -> dict:
+    return _jwt_payload(user.get_username(), await _get_scopes(user), user.is_staff)
 
 
-def jwt_payload_from_id(user_id: str) -> dict:
-    return _jwt_payload(user_id)
+def jwt_payload_from_claims(claims: dict) -> dict:
+    return _jwt_payload(
+        claims["sub"], claims["scopes"], STAFF_SCOPE in claims["scopes"]
+    )
 
 
 def encode_jwt(payload: dict, token_type: TokenType) -> str:
@@ -89,6 +88,30 @@ def encode_jwt(payload: dict, token_type: TokenType) -> str:
         lifetime=exp,
         jti_size=jti_size,
     )
+
+
+async def _get_scopes(user: user_model) -> list:
+    """Return a list of user role names."""
+    query = (
+        user_model.join(UserRole)
+        .join(Role)
+        .join(RolePermission)
+        .join(Permission)
+        .select()
+    )
+    role_perms = (
+        await query.where(user_model.username == user.username)
+        .gino.load(Role.distinct(Role.id).load(add_permission=Permission.load()))
+        .query.gino.all()
+    )
+
+    for role in role_perms:
+        cached_role = await cache.get(role.name)
+        if not cached_role:
+            permissions = [p.to_dict() for p in role.permissions]
+            await cache.set(role.name, permissions)
+
+    return list(map(lambda role: role.name, role_perms))
 
 
 def process_jwt_header(header: str) -> str:
@@ -142,7 +165,7 @@ def decode_jwt(jwt: str) -> Tuple:
         raise JWTExpired from error
 
 
-def get_token_from_user(user: user_model) -> str:
+async def get_token_from_user(user: user_model) -> str:
     """A shortcut to get the token directly from a user model instance.
 
     Args:
@@ -151,7 +174,7 @@ def get_token_from_user(user: user_model) -> str:
     Returns:
         str: The JWT token
     """
-    return encode_jwt(jwt_payload(user), TokenType.ACCESS)
+    return encode_jwt(await jwt_payload(user), TokenType.ACCESS)
 
 
 def verify_password(plain_password: str, hashed_password: str) -> bool:

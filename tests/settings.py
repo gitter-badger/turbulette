@@ -21,9 +21,11 @@ CORSMiddleware = {
 
 DEBUG = config("DEBUG", cast=bool, default=True)
 # Enable ariadne apollo tracing extension
-APOLLO_TRACING = config("APOLLO_TRACING", cast=bool, default=False)
 APOLLO_FEDERATION = config("APOLLO_FEDERATION", cast=bool, default=False)
 
+ARIADNE_EXTENSIONS = config(
+    "ARIADNE_EXTENSIONS", cast=CommaSeparatedStrings, default=[]
+)
 
 ###########################
 # AUTH
@@ -37,6 +39,7 @@ AUTH_USER_MODEL = config("AUTH_USER_MODEL", cast=str)
 HASH_ALGORITHM = config("HASH_ALGORITHM", cast=str, default="bcrypt")
 
 # Used to encode the JSON Web token
+JWT_VERIFY = config("JWT_VERIFY", cast=bool, default=True)
 JWT_REFRESH_ENABLED = config("JWT_REFRESH_ENABLED", cast=bool, default=True)
 JWT_BLACKLIST_ENABLED = config("JWT_REFRESH_ENABLED", cast=bool, default=True)
 JWT_BLACKLIST_TOKEN_CHECKS = config(
@@ -45,6 +48,8 @@ JWT_BLACKLIST_TOKEN_CHECKS = config(
 JWT_ALGORITHM = config("JWT_ALGORITHM", cast=str, default="ES256")
 JWT_AUDIENCE = config("JWT_AUDIENCE", cast=str, default="http://api.io/booking")
 JWT_ISSUER = config("JWT_ISSUER", cast=str, default="http://api.io/auth/")
+
+POLICY_CONFIG = config("POLICY_CONFIG", cast=str)
 
 SECRET_KEY = {
     "kty": config("SECRET_KEY_KTY", cast=Secret),

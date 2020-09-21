@@ -7,7 +7,7 @@ from turbulette.apps.auth.core import (
     TokenType,
     encode_jwt,
     jwt_payload,
-    jwt_payload_from_id,
+    jwt_payload_from_claims,
     verify_password,
 )
 from turbulette.apps.auth.decorators import refresh_token_required
@@ -21,7 +21,7 @@ async def get_jwt(_, __, username, password):
     error = ErrorField()
     if user:
         if verify_password(password, user.hashed_password):
-            payload = jwt_payload(user)
+            payload = await jwt_payload(user)
             access_token = encode_jwt(payload, TokenType.ACCESS)
             refresh_token = (
                 encode_jwt(payload, TokenType.REFRESH)
@@ -39,6 +39,5 @@ async def get_jwt(_, __, username, password):
 @refresh_token_required
 async def refresh_jwt_token(_, __, jwt_claims: dict):
     """Refresh an access token."""
-    id_ = jwt_claims["sub"]
-    payload = jwt_payload_from_id(id_)
+    payload = jwt_payload_from_claims(jwt_claims)
     return AccessToken(access_token=encode_jwt(payload, TokenType.ACCESS))

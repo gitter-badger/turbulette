@@ -1,6 +1,9 @@
 from enum import Enum
+from typing import Dict, List
 from ariadne import format_error
 from graphql import GraphQLError
+
+errors: Dict[str, Dict[str, List]] = {}
 
 
 class ErrorCode(Enum):
@@ -18,17 +21,21 @@ class ErrorCode(Enum):
     JWT_NOT_FOUND = "JWT was not found"
     JWT_NOT_FRESH = "JWT is not fresh enough"
     JWT_INVALID_TOKEN_TYPE = "JWT type is invalid"
+    FIELD_NOT_ALLOWED = "Some fields are not allowed"
     SERVER_ERROR = "Internal server error"
+    QUERY_NOT_ALLOWED = "You are not allowed to perform this query"
 
 
 class BaseError(Exception):
     """Base Exception class for unexpected server errors."""
 
-    error_code: ErrorCode = ErrorCode.SERVER_ERROR
+    error_code: Enum = ErrorCode.SERVER_ERROR
     extensions: dict = {}
 
     def __init__(self, message: str = None):
         self.extensions["code"] = self.error_code.name
+        if not message:
+            message = self.error_code.value
         super().__init__(message)
 
 
@@ -60,17 +67,6 @@ class ErrorField:
         self.errors_list.append(f"{nature}: {message}" if nature else message)
 
 
-class PermissionDenied(ErrorField):
-    """Wrap BaseError with a default message for permission errors.
-
-    Args:
-        BaseError (class): Inherits from BaseError class
-    """
-
-    def __init__(self, message="You are not allowed to perform this action"):
-        super().__init__(message=message)
-
-
 class PydanticsValidationError(ErrorField):
     """Handle pydantic error messages when trying to validate a model.
 
@@ -83,7 +79,7 @@ class PydanticsValidationError(ErrorField):
         super().__init__(errors_list=out)
 
 
-def error_formatter(error: GraphQLError, debug: bool = False) -> dict:
+def error_formatter(error: GraphQLError, debug: bool = False):
     """Replace Ariadne default error formatter.
 
     Args:
@@ -100,10 +96,13 @@ def error_formatter(error: GraphQLError, debug: bool = False) -> dict:
     else:
         formatted = error.formatted  # pragma: no cover
 
-    # Create formatted error data
-    if "code" in formatted["extensions"]:
-        # The `code` key has already been set up by BaseError
-        error_code = getattr(ErrorCode, formatted["extensions"]["code"])
-        if not formatted.get("message") or formatted["message"] == "None":
-            formatted["message"] = error_code.value
     return formatted
+
+
+def add_error(err_type: str, code: ErrorCode, message: str = None):
+    if not message:
+        message = code.value
+    if err_type not in errors:
+        errors[err_type] = {code.name: [message]}
+    elif code.name in errors[err_type] and message not in errors[err_type][code.name]:
+        errors[err_type][code.name].append(message)

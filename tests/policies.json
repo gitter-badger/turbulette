@@ -1,0 +1,71 @@
+[
+  {
+    "principal": ["staff"],
+    "conditions": {
+      "is_claim_present": "iss",
+      "claim": {
+        "name": "scopes",
+        "includes": ["_staff"]
+      }
+    },
+    "allow": {
+      "mutation": {
+        "fields": ["addBook"]
+      },
+      "book": {
+        "fields": ["borrowings", "priceBought"],
+        "query": ["book*"]
+      }
+    }
+  },
+  {
+    "principal": ["perm:book:borrow"],
+    "allow": {
+      "mutation": {
+        "fields": ["borrowBook"]
+      }
+    }
+  },
+  {
+    "principal": ["perm:book:borrow-unlimited"],
+    "allow": {
+      "mutation": {
+        "fields": ["borrowUnlimitedBooks"]
+      }
+    }
+  },
+  {
+    "principal": ["role:customer"],
+    "allow": {
+      "query": {
+        "fields": ["book"]
+      },
+      "comic": {
+        "fields": ["artist"],
+        "query": ["comics"]
+      }
+    },
+    "deny": {
+      "book": {
+        "fields": ["borrowings"],
+        "query": ["*book"]
+      }
+    }
+  },
+  {
+    "principal": ["authenticated"],
+    "allow": {
+      "query": {
+        "fields": ["books"]
+      }
+    }
+  },
+  {
+    "principal": ["user:test_user_staff"],
+    "allow": {
+      "mutation": {
+        "fields": ["destroyLibrary"]
+      }
+    }
+  }
+]

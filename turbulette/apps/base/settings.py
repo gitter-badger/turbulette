@@ -1,11 +1,3 @@
-# from turbulette.conf import (
-#     SIMPLE_SETTINGS
-# )
-
-# `simple_settings` need the SIMPLE_SETTINGS settings
-# to process the rules
-# SIMPLE_SETTINGS = simple_settings
-
 OVERRIDE_BY_ENV = True
 
 # Base settings rules
@@ -32,8 +24,7 @@ SETTINGS_RULES = {
 # DEFAULT SETTINGS
 ###########################
 
-# Enable ariadne apollo tracing extension
-APOLLO_TRACING = False
+ARIADNE_EXTENSIONS: list = []
 
 
 # Tell ariadne to create schema with federation support
@@ -82,3 +73,5 @@ CSRF_FORM_PARAM = False
 ALLOWED_HOSTS: list = []
 
 CONFIGURE_LOGGING = False
+
+CACHE = "locmem://null"
