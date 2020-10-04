@@ -1,7 +1,4 @@
 
-
-
-
 <!doctype html>
 <html lang="en" class="no-js">
   <head>
@@ -14,7 +11,7 @@
       
       
       <link rel="shortcut icon" href="assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.5.14">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.0.1">
     
     
       
@@ -22,15 +19,17 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.d3202873.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.38780c08.min.css">
       
-        <link rel="stylesheet" href="assets/stylesheets/palette.ff0a5ce4.min.css">
-      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.3f72e892.min.css">
+        
       
     
     
     
       
+        
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
         <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
@@ -48,9 +47,11 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent="">
-  
     
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent="">
+      
+  
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
@@ -133,8 +134,6 @@
 </header>
     
     <div class="md-container" data-md-component="container">
-      
-        
       
       
         
@@ -219,11 +218,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-min-quick-start" class="md-nav__link">
-    🚀  5 min Quick Start
+  <a href="#quick-start" class="md-nav__link">
+    🚀 Quick Start
   </a>
   
-    <nav class="md-nav" aria-label="🚀  5 min Quick Start">
+    <nav class="md-nav" aria-label="🚀 Quick Start">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -248,8 +247,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#4-add-a-resolver" class="md-nav__link">
-    4: Add a resolver
+  <a href="#4-add-pydantic-model" class="md-nav__link">
+    4: Add pydantic model
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-add-a-resolver" class="md-nav__link">
+    5: Add a resolver
   </a>
   
 </li>
@@ -383,11 +389,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-min-quick-start" class="md-nav__link">
-    🚀  5 min Quick Start
+  <a href="#quick-start" class="md-nav__link">
+    🚀 Quick Start
   </a>
   
-    <nav class="md-nav" aria-label="🚀  5 min Quick Start">
+    <nav class="md-nav" aria-label="🚀 Quick Start">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -412,8 +418,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#4-add-a-resolver" class="md-nav__link">
-    4: Add a resolver
+  <a href="#4-add-pydantic-model" class="md-nav__link">
+    4: Add pydantic model
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-add-a-resolver" class="md-nav__link">
+    5: Add a resolver
   </a>
   
 </li>
@@ -445,9 +458,6 @@
                   <a href="https://github.com/python-turbulette/turbulette/edit/master/docs/index.md" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
-                
-                
-                  
                 
                 
                   <h1>Turbulette</h1>
@@ -491,7 +501,7 @@
 <li>Split your API in small, independent applications</li>
 <li>Generate Pydantic models from GraphQL types</li>
 <li>JWT authentication with refresh and fresh tokens</li>
-<li>Powerful and extendable policy-based access control (PBAC)</li>
+<li>Declarative, powerful and extendable policy-based access control (PBAC)</li>
 <li>Extendable auth user model with role management</li>
 <li>Async caching (provided by async-caches)</li>
 <li>Built-in CLI to manage project, apps, and DB migrations</li>
@@ -524,7 +534,7 @@
 </code></pre></div>
 
 <hr />
-<h2 id="5-min-quick-start">🚀  5 min Quick Start</h2>
+<h2 id="quick-start">🚀 Quick Start</h2>
 <p>Here is a short example that demonstrates a minimal project setup.</p>
 <p>We will see how to scaffold a simple Turbulette project, create a Turbulette application, and write some GraphQL schema/resolver. It's advisable to start the project in a virtualenv to isolate your dependencies.
 Here we will be using <a href="https://python-poetry.org/">poetry</a> :</p>
@@ -536,14 +546,14 @@ Here we will be using <a href="https://python-poetry.org/">poetry</a> :</p>
 </code></pre></div>
 
 <h3 id="1-create-a-project">1: Create a project</h3>
-<p>First, create a <code>hello_world/</code> directory that will contain the whole project.</p>
+<p>First, create a directory that will contain the whole project.</p>
 <p>Now, inside this folder, create your Turbulette project using the <code>turb</code> CLI :</p>
-<div class="highlight"><pre><span></span><code>turb project my-project
+<div class="highlight"><pre><span></span><code>turb project eshop
 </code></pre></div>
 
 <p>You should get with something like this :</p>
 <div class="highlight"><pre><span></span><code><span class="go">.</span>
-<span class="go">└── 📁 my-project</span>
+<span class="go">└── 📁 eshop</span>
 <span class="go">    ├── 📁 alembic</span>
 <span class="go">    │   ├── 📄 env.py</span>
 <span class="go">    │   └── 📄 script.py.mako</span>
@@ -555,7 +565,7 @@ Here we will be using <a href="https://python-poetry.org/">poetry</a> :</p>
 
 <p>Let's break down the structure :</p>
 <ul>
-<li><code>📁 my-project</code> : Here is the so-called <em>Turbulette project</em> folder, it will contain applications and project-level configuration files</li>
+<li><code>📁 eshop</code> : Here is the so-called <em>Turbulette project</em> folder, it will contain applications and project-level configuration files</li>
 <li><code>📁 alembic</code> : Contains the <a href="https://alembic.sqlalchemy.org/en/latest/">Alembic</a> scripts used when generating/applying DB migrations</li>
 <li><code>📄 env.py</code></li>
 <li><code>📄 script.py.mako</code></li>
@@ -574,8 +584,8 @@ from <code>.env</code> using Starlette's <code>Config</code> object.</p>
 </div>
 <h3 id="2-create-the-first-app">2: Create the first app</h3>
 <p>Now it's time to create a Turbulette application!</p>
-<p>Run this command under the project directory (<code>my-project</code>) :</p>
-<div class="highlight"><pre><span></span><code>turb app --name hello-world
+<p>Run this command under the project directory (<code>eshop</code>) :</p>
+<div class="highlight"><pre><span></span><code>turb app --name account
 </code></pre></div>
 
 <div class="admonition info">
@@ -584,10 +594,10 @@ from <code>.env</code> using Starlette's <code>Config</code> object.</p>
 </div>
 <p>You should see your new app under the project folder :</p>
 <div class="highlight"><pre><span></span><code><span class="go">.</span>
-<span class="go">└── 📁 my-project</span>
+<span class="go">└── 📁 eshop</span>
 <span class="go">    ...</span>
 <span class="go">    |</span>
-<span class="go">    └── 📁 hello-world</span>
+<span class="go">    └── 📁 account</span>
 <span class="go">        ├── 📁 graphql</span>
 <span class="go">        ├── 📁 migrations</span>
 <span class="go">        │   └── 📄 20200926_1508_auto_ef7704f9741f_initial.py</span>
@@ -602,18 +612,35 @@ from <code>.env</code> using Starlette's <code>Config</code> object.</p>
 <li><code>📁 resolvers</code> : Python package where you will write resolvers binded to the schema</li>
 <li><code>📄 models.py</code> : Will hold GINO models for this app</li>
 </ul>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>What is this "initial" python file under <code>📁 migrations</code>?</p>
+<p>We won't cover database connection in this quickstart, but note that it's the initial database migration
+for the <code>account</code> app that creates its dedicated Alembic branch, needed to generate/apply per-app migrations.</p>
+</div>
+<p>Before writing some code, the only thing to do is make Turbulette aware of our lovely account app.</p>
+<p>To do this, open <code>📄 eshop/settings.py</code> and add <code>"eshop.account"</code> to <code>INSTALLED_APPS</code>,
+so the application is registered and can be picked up by Turbulette at startup :</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># List installed Turbulette apps that defines some GraphQL schema</span>
+<span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;eshop.account&quot;</span><span class="p">]</span>
+</code></pre></div>
+
 <h3 id="3-graphql-schema">3: GraphQL schema</h3>
 <p>Now that we have our project scaffold, we can start writing actual schema/code.</p>
 <p>Create a <code>schema.gql</code> file in the <code>📁 graphql</code> folder and add this base schema :</p>
 <div class="highlight"><pre><span></span><code>extend type Query {
-    user: [User]
+    registerCard(input: CreditCard!): SuccessOut!
 }
 
-type User {
-    id: ID!
-    username: String!
-    gender: String!
-    isStaff: Boolean!
+input CreditCard {
+    number: String!
+    expiration: Date!
+    name: String!
+}
+
+type SuccessOut {
+    success: Boolean
+    errors: [String]
 }
 </code></pre></div>
 
@@ -621,34 +648,99 @@ type User {
 <p class="admonition-title">Info</p>
 <p>Note that we <em>extend</em> the type <code>Query</code> because Turbulette already defines it. The same goes for <code>Mutation</code> type</p>
 </div>
-<h3 id="4-add-a-resolver">4: Add a resolver</h3>
-<p>The last missing piece is the resolver for our <code>user</code> query, to make the API returning something when querying for it.</p>
-<p>As you may have guessed, we will create a new Python module in our <code>📁 resolvers</code> package. Let's call it <code>user.py</code> :</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">turbulette</span> <span class="kn">import</span> <span class="n">query</span>
+<p>Notice that with use the <code>Date</code> scalar, it's one of the custom scalars provided by Turbulette. It parses string in the ISO8601 date format YYY-MM-DD.</p>
+<h3 id="4-add-pydantic-model">4: Add pydantic model</h3>
+<p>We want to validate our <code>CreditCard</code> input to ensure the user has entered a valid card number and date.
+Fortunately, Turbulette integrates with <a href="https://pydantic-docs.helpmanual.io/">Pydantic</a>, a data validation library that uses python type annotations,
+and offers a convenient way to generate a Pydantic model from a schema type.</p>
+<p>Create a new <code>📄 pyd_models.py</code> under <code>📁 account</code> :</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">turbulette.validation</span> <span class="kn">import</span> <span class="n">GraphQLModel</span>
+<span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">PaymentCardNumber</span>
 
 
-<span class="nd">@query</span><span class="o">.</span><span class="n">field</span><span class="p">(</span><span class="s2">&quot;user&quot;</span><span class="p">)</span>
-<span class="k">async</span> <span class="k">def</span> <span class="nf">user</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">info</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="k">return</span> <span class="p">[</span>
-        <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;Gustave Eiffel&quot;</span><span class="p">,</span> <span class="s2">&quot;gender&quot;</span><span class="p">:</span> <span class="s2">&quot;male&quot;</span><span class="p">,</span> <span class="s2">&quot;is_staff&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">},</span>
-        <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;Marie Curie&quot;</span><span class="p">,</span> <span class="s2">&quot;gender&quot;</span><span class="p">:</span> <span class="s2">&quot;female&quot;</span><span class="p">,</span> <span class="s2">&quot;is_staff&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span>
-    <span class="p">]</span>
+<span class="k">class</span> <span class="nc">CreditCard</span><span class="p">(</span><span class="n">GraphQLModel</span><span class="p">):</span>
+    <span class="k">class</span> <span class="nc">GraphQL</span><span class="p">:</span>
+        <span class="n">gql_type</span> <span class="o">=</span> <span class="s2">&quot;CreditCard&quot;</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;number&quot;</span><span class="p">:</span> <span class="n">PaymentCardNumber</span><span class="p">}</span>
 </code></pre></div>
 
+<p>What's happening here?</p>
+<p>The inherited <code>GraphQLModel</code> class is a pydantic model that knows about the GraphQL schema and can produce pydantic fields from a given GraphQL type. We specify the GraphQL type with the <code>gql_type</code> attribute; it's the only one required.</p>
+<p>But we also add a <code>fields</code> attribute to override the type of <code>number</code> field because it is string typed in our schema. If we don't add this, Turbulette will assume that <code>number</code> is a string and will annotate the number field as <code>str</code>.
+<code>fields</code> is a mapping between GraphQL field names and the type that will override the schema's one.</p>
+<p>Let's add another validation check: the expiration date. We want to ensure the user has entered a valid date (i.e., at least greater than now) :</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">PaymentCardNumber</span>
+<span class="hll"><span class="kn">from</span> <span class="nn">turbulette.validation</span> <span class="kn">import</span> <span class="n">GraphQLModel</span><span class="p">,</span> <span class="n">validator</span>
+</span>
+
+<span class="k">class</span> <span class="nc">CreditCard</span><span class="p">(</span><span class="n">GraphQLModel</span><span class="p">):</span>
+    <span class="k">class</span> <span class="nc">GraphQL</span><span class="p">:</span>
+        <span class="n">gql_type</span> <span class="o">=</span> <span class="s2">&quot;CreditCard&quot;</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;number&quot;</span><span class="p">:</span> <span class="n">PaymentCardNumber</span><span class="p">}</span>
+
+<span class="hll">    <span class="nd">@validator</span><span class="p">(</span><span class="s2">&quot;expiration&quot;</span><span class="p">)</span>
+</span><span class="hll">    <span class="k">def</span> <span class="nf">check_expiration_date</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+</span><span class="hll">        <span class="k">if</span> <span class="n">value</span> <span class="o">&lt;</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">():</span>
+</span><span class="hll">            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Expiration date is invalid&quot;</span><span class="p">)</span>
+</span><span class="hll">        <span class="k">return</span> <span class="n">value</span>
+</span></code></pre></div>
+
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>Why don't we use the <code class="highlight"><span class="nd">@validator</span></code> from Pydantic?</p>
+<p>For those who have already used Pydantic, you probably know about the <code class="highlight"><span class="nd">@validator</span></code> decorator used add custom validation rules on fields.</p>
+<p>But here, we use a <code class="highlight"><span class="nd">@validator</span></code> imported from <code>turbulette.validation</code>, why?</p>
+<p>They're almost identical. Turbulette's validator is just a shortcut to the Pydantic one with <code>check_fields=False</code> as a default, instead of <code>True</code>, because we use an inherited <code>BaseModel</code>. The above snippet would correctly work if we used Pydantic's validator and explicitly set <code class="highlight"><span class="nd">@validator</span><span class="p">(</span><span class="s2">&quot;expiration&quot;</span><span class="p">,</span> <span class="n">check_fields</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>.</p>
+</div>
+<h3 id="5-add-a-resolver">5: Add a resolver</h3>
+<p>The last missing piece is the resolver for our <code>user</code> query, to make the API returning something when querying for it.</p>
+<p>The GraphQL part is handled by <a href="https://ariadnegraphql.org/">Ariadne</a>, a schema-first GraphQL library that allows binding the logic to the schema with minimal code.</p>
+<p>As you may have guessed, we will create a new Python module in our <code>📁 resolvers</code> package.</p>
+<p>Let's call it <code>📄 user.py</code> :</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">turbulette</span> <span class="kn">import</span> <span class="n">query</span>
+<span class="kn">from</span> <span class="nn">..pyd_models</span> <span class="kn">import</span> <span class="n">CreditCard</span>
+
+<span class="nd">@query</span><span class="o">.</span><span class="n">field</span><span class="p">(</span><span class="s2">&quot;registerCard&quot;</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">register</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">info</span><span class="p">,</span> <span class="n">valid_input</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;success&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span>
+</code></pre></div>
+
+<p><code>query</code> is the base query type defined by Turbulette and is used to register all query resolvers (hence the use of <code>extend type Query</code> on the schema).
+For now, our resolver is very simple and doesn't do any data validation on inputs and doesn't handle errors.</p>
+<p>Turbulette has a <code class="highlight"><span class="nd">@validate</span></code> decorator that can be used to validate resolver input using a pydantic model (like the one defined in <a href="#4-add-pydantic-model">Step 4</a>).</p>
+<p>Here's how to use it:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">turbulette</span> <span class="kn">import</span> <span class="n">query</span>
+<span class="kn">from</span> <span class="nn">..pyd_models</span> <span class="kn">import</span> <span class="n">CreditCard</span>
+<span class="hll"><span class="kn">from</span> <span class="nn">turbulette.validation</span> <span class="kn">import</span> <span class="n">validate</span>
+</span>
+<span class="nd">@query</span><span class="o">.</span><span class="n">field</span><span class="p">(</span><span class="s2">&quot;registerCard&quot;</span><span class="p">)</span>
+<span class="hll"><span class="nd">@validate</span><span class="p">(</span><span class="n">CreditCard</span><span class="p">)</span>
+</span><span class="hll"><span class="k">async</span> <span class="k">def</span> <span class="nf">register</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">info</span><span class="p">,</span> <span class="n">valid_input</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+</span>    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;success&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span>
+</code></pre></div>
+
+<p>Note the new <code>valid_input</code> param. The <code class="highlight"><span class="nd">@validate</span></code> decorator produces it if the validation succeeds.
+But what happens otherwise? Normally, if the validation fails, pydantic will raise a <code>ValidationError</code>,
+but here the <code class="highlight"><span class="nd">@validate</span></code> decorator handles the exception and will add error messages returned by pydantic into a dedicated error field in the GraphQL response.</p>
 <h3 id="5-run-it">5: Run it</h3>
 <p>Our <code>user</code> query is now binded to the schema, so let's test it.</p>
-<p>Start the server :</p>
-<div class="highlight"><pre><span></span><code>poetry run uvicorn app:app --port <span class="m">8000</span>
+<p>Start the server in the root directory (the one containing <code>📁 eshop</code> folder) :</p>
+<div class="highlight"><pre><span></span><code>poetry run uvicorn eshop.app:app --port <span class="m">8000</span>
 </code></pre></div>
 
 <p>Now, go to <a href="http://localhost:8000/graphql">http://localhost:8000/graphql</a>, you will see the <a href="https://github.com/graphql/graphql-playground">GraphQL Playground</a> IDE.
 Finally, run the user query, for example :</p>
-<div class="highlight"><pre><span></span><code>query {
-  user {
-    id
-    username
-    gender
-    isStaff
+<div class="highlight"><pre><span></span><code>query card {
+  registerCard(
+    input: {
+      number: &quot;4000000000000002&quot;
+      expiration: &quot;2023-05-12&quot;
+      name: &quot;John Doe&quot;
+    }
+  ) {
+    success
+    errors
   }
 }
 </code></pre></div>
@@ -656,25 +748,38 @@ Finally, run the user query, for example :</p>
 <p>Should give you the following expected result :</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
   <span class="nt">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&quot;user&quot;</span><span class="p">:</span> <span class="p">[</span>
-      <span class="p">{</span>
-        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;Gustave Eiffel&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;gender&quot;</span><span class="p">:</span> <span class="s2">&quot;male&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;isStaff&quot;</span><span class="p">:</span> <span class="kc">false</span>
-      <span class="p">},</span>
-      <span class="p">{</span>
-        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;Marie Curie&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;gender&quot;</span><span class="p">:</span> <span class="s2">&quot;female&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;isStaff&quot;</span><span class="p">:</span> <span class="kc">true</span>
-      <span class="p">}</span>
-    <span class="p">]</span>
+    <span class="nt">&quot;registerCard&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;success&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="nt">&quot;errors&quot;</span><span class="p">:</span> <span class="kc">null</span>
+    <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p>Good job! That was a straightforward example, showing off the bare minimum needed to set up a Turbulette API. To get the most of it, follow the User Guide.</p>
+<p>Now, try entering a wrong date (before <em>now</em>). You should see the validation error as expected:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+  <span class="nt">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;registerCard&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;success&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+      <span class="nt">&quot;errors&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;expiration: Expiration date is invalid&quot;</span>
+      <span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>How the error message end in the <code>errors</code> key?</p>
+<p>Indeed, we didn't specify anywhere that validation errors should be passed to the <code>errors</code> key in our <code>SuccessOut</code> GraphQL type.
+That is because Turbulette has a setting called <code>ERROR_FIELD</code>, which defaults to <code>"errors"</code>.
+This setting indicates the error field on the GraphLQ output type used by Turbulette when collecting query errors.</p>
+<p>It means that if you didn't specify <code>ERROR_FIELD</code> on the GraphQL type, you would get an exception telling you that the field is missing.</p>
+<p>It's the default (and recommended) way of handling errors in Turbulette. Still, as all happens in the <code class="highlight"><span class="nd">@validate</span></code>, you can always remove it and manually instantiate your Pydantic models in resolvers.</p>
+</div>
+<p>Good job! 👏</p>
+<p>That was a straightforward example, showing off a simple Turbulette API set up. To get the most of it, follow the User Guide.</p>
                 
                   
                     
@@ -683,7 +788,7 @@ Finally, run the user query, for example :</p>
 <div class="md-source-date">
   <small>
     
-      Last update: 2020-09-27
+      Last update: 2020-10-04
     
   </small>
 </div>
@@ -740,15 +845,15 @@ Finally, run the user query, for example :</p>
       
     </div>
     
-      <script src="assets/javascripts/vendor.2d1db4bd.min.js"></script>
-      <script src="assets/javascripts/bundle.6627ddf3.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      <script src="assets/javascripts/vendor.77e55a48.min.js"></script>
+      <script src="assets/javascripts/bundle.aa3f9871.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
       
       <script>
         app = initialize({
           base: ".",
           features: ['search.highlight'],
           search: Object.assign({
-            worker: "assets/javascripts/worker/search.5eca75d3.min.js"
+            worker: "assets/javascripts/worker/search.4ac00218.min.js"
           }, typeof search !== "undefined" && search)
         })
       </script>
