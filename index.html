@@ -549,6 +549,10 @@ Here we will be using <a href="https://python-poetry.org/">poetry</a> :</p>
 <div class="highlight"><pre><span></span><code>poetry add turbulette
 </code></pre></div>
 
+<p>For the rest of the tutorial, we will assume that commands will be executed under the virtualenv.  You can either prepend all commands with <code>poetry run</code> , or spawn a shell inside the virtualenv :</p>
+<div class="highlight"><pre><span></span><code>poetry shell
+</code></pre></div>
+
 <h3 id="1-create-a-project">1: Create a project</h3>
 <p>First, create a directory that will contain the whole project.</p>
 <p>Now, inside this folder, create your Turbulette project using the <code>turb</code> CLI :</p>
@@ -730,7 +734,7 @@ but here the <code class="highlight"><span class="nd">@validate</span></code> de
 <h3 id="5-run-it">5: Run it</h3>
 <p>Our <code>user</code> mutation is now binded to the schema, so let's test it.</p>
 <p>Start the server in the root directory (the one containing <code>📁 eshop</code> folder) :</p>
-<div class="highlight"><pre><span></span><code>poetry run uvicorn eshop.app:app --port <span class="m">8000</span>
+<div class="highlight"><pre><span></span><code>uvicorn eshop.app:app --port <span class="m">8000</span>
 </code></pre></div>
 
 <p>Now, go to <a href="http://localhost:8000/graphql">http://localhost:8000/graphql</a>, you will see the <a href="https://github.com/graphql/graphql-playground">GraphQL Playground</a> IDE.
