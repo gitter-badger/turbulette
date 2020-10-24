@@ -1,7 +1,4 @@
 
-
-
-
 <!doctype html>
 <html lang="en" class="no-js">
   <head>
@@ -14,7 +11,7 @@
       
       
       <link rel="shortcut icon" href="assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.5.14">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.1.0">
     
     
       
@@ -22,15 +19,17 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.d3202873.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.bc7e593a.min.css">
       
-        <link rel="stylesheet" href="assets/stylesheets/palette.ff0a5ce4.min.css">
-      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab28b872.min.css">
+        
       
     
     
     
       
+        
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
         <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
@@ -48,9 +47,11 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent="">
-  
     
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent="">
+      
+  
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
@@ -66,7 +67,9 @@
       
     </div>
     
-      <header class="md-header" data-md-component="header">
+      
+
+<header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid" aria-label="Header">
     <a href="." title="Turbulette" class="md-header-nav__button md-logo" aria-label="Turbulette">
       
@@ -134,8 +137,6 @@
     
     <div class="md-container" data-md-component="container">
       
-        
-      
       
         
       
@@ -146,7 +147,9 @@
               <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
-                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+                    
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="." title="Turbulette" class="md-nav__button md-logo" aria-label="Turbulette">
       
@@ -189,7 +192,7 @@
         <span class="md-nav__icon md-icon"></span>
       </label>
     
-    <a href="." title="Turbulette" class="md-nav__link md-nav__link--active">
+    <a href="." class="md-nav__link md-nav__link--active">
       Turbulette
     </a>
     
@@ -307,7 +310,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/" title="en" class="md-nav__link">
+    <a href="/" class="md-nav__link">
       en
     </a>
   </li>
@@ -324,7 +327,7 @@
 
 
   <li class="md-nav__item">
-    <a href="user-guide/" title="User Guide" class="md-nav__link">
+    <a href="user-guide/" class="md-nav__link">
       User Guide
     </a>
   </li>
@@ -336,7 +339,7 @@
 
 
   <li class="md-nav__item">
-    <a href="faq/" title="FAQ" class="md-nav__link">
+    <a href="faq/" class="md-nav__link">
       FAQ
     </a>
   </li>
@@ -348,7 +351,7 @@
 
 
   <li class="md-nav__item">
-    <a href="changelogs/" title="Release Notes" class="md-nav__link">
+    <a href="changelogs/" class="md-nav__link">
       Release Notes
     </a>
   </li>
@@ -461,9 +464,6 @@
                   </a>
                 
                 
-                  
-                
-                
                   <h1>Turbulette</h1>
                 
                 <p align="center">
@@ -471,7 +471,6 @@
         😴 Turbulette, a batteries-included framework to build high performance, async GraphQL APIs 😴
     </em>
 </p>
-
 <p align="center">
 <a href="https://github.com/gazorby/turbulette/actions?query=workflow%3Atest">
     <img src="https://github.com/python-turbulette/turbulette/workflows/test/badge.svg"/>
@@ -535,11 +534,9 @@
 <h2 id="installation">Installation</h2>
 <div class="highlight"><pre><span></span><code>pip install turbulette
 </code></pre></div>
-
 <p>You will also need an <abbr title="Asynchronous Server Gateway Interface">ASGI</abbr> server, such as <a href="https://www.uvicorn.org/">uvicorn</a> :</p>
 <div class="highlight"><pre><span></span><code>pip install uvicorn
 </code></pre></div>
-
 <hr />
 <h2 id="quick-start">🚀 Quick Start</h2>
 <p>Here is a short example that demonstrates a minimal project setup.</p>
@@ -547,21 +544,17 @@
 Here we will be using <a href="https://python-poetry.org/">poetry</a> :</p>
 <div class="highlight"><pre><span></span><code>poetry init
 </code></pre></div>
-
 <p>Then, install Turbulette from PyPI :</p>
 <div class="highlight"><pre><span></span><code>poetry add turbulette
 </code></pre></div>
-
 <p>For the rest of the tutorial, we will assume that commands will be executed under the virtualenv.  You can either prepend all commands with <code>poetry run</code> , or spawn a shell inside the virtualenv :</p>
 <div class="highlight"><pre><span></span><code>poetry shell
 </code></pre></div>
-
 <h3 id="1-create-a-project">1: Create a project</h3>
 <p>First, create a directory that will contain the whole project.</p>
 <p>Now, inside this folder, create your Turbulette project using the <code>turb</code> CLI :</p>
 <div class="highlight"><pre><span></span><code>turb project eshop
 </code></pre></div>
-
 <p>You should get with something like this :</p>
 <div class="highlight"><pre><span></span><code><span class="go">.</span>
 <span class="go">└── 📁 eshop</span>
@@ -573,7 +566,6 @@ Here we will be using <a href="https://python-poetry.org/">poetry</a> :</p>
 <span class="go">    ├── 📄 app.py</span>
 <span class="go">    └── 📄 settings.py</span>
 </code></pre></div>
-
 <p>Let's break down the structure :</p>
 <ul>
 <li><code>📁 eshop</code> : Here is the so-called <em>Turbulette project</em> folder, it will contain applications and project-level configuration files</li>
@@ -598,7 +590,6 @@ from <code>.env</code> using Starlette's <code>Config</code> object.</p>
 <p>Run this command under the project directory (<code>eshop</code>) :</p>
 <div class="highlight"><pre><span></span><code>turb app --name account
 </code></pre></div>
-
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>You need to run <code>turb app</code> under the project dir because the CLI needs to access the <code>almebic.ini</code> file to create the initial database migration.</p>
@@ -615,7 +606,6 @@ from <code>.env</code> using Starlette's <code>Config</code> object.</p>
 <span class="go">        ├── 📁 resolvers</span>
 <span class="go">        └── 📄 models.py</span>
 </code></pre></div>
-
 <p>Details :</p>
 <ul>
 <li><code>📁 graphql</code> : All the GraphQL schema will live here</li>
@@ -635,7 +625,6 @@ so the application is registered and can be picked up by Turbulette at startup :
 <div class="highlight"><pre><span></span><code><span class="c1"># List installed Turbulette apps that defines some GraphQL schema</span>
 <span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;eshop.account&quot;</span><span class="p">]</span>
 </code></pre></div>
-
 <h3 id="3-graphql-schema">3: GraphQL schema</h3>
 <p>Now that we have our project scaffold, we can start writing actual schema/code.</p>
 <p>Create a <code>schema.gql</code> file in the <code>📁 graphql</code> folder and add this base schema :</p>
@@ -654,7 +643,6 @@ type SuccessOut {
     errors: [String]
 }
 </code></pre></div>
-
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>Note that we <em>extend</em> the type <code>Mutation</code> because Turbulette already defines it. The same goes for <code>Query</code> type</p>
@@ -674,7 +662,6 @@ and offers a convenient way to generate a Pydantic model from a schema type.</p>
         <span class="n">gql_type</span> <span class="o">=</span> <span class="s2">&quot;CreditCard&quot;</span>
         <span class="n">fields</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;number&quot;</span><span class="p">:</span> <span class="n">PaymentCardNumber</span><span class="p">}</span>
 </code></pre></div>
-
 <p>What's happening here?</p>
 <p>The inherited <code>GraphQLModel</code> class is a pydantic model that knows about the GraphQL schema and can produce pydantic fields from a given GraphQL type. We specify the GraphQL type with the <code>gql_type</code> attribute; it's the only one required.</p>
 <p>But we also add a <code>fields</code> attribute to override the type of <code>number</code> field because it is string typed in our schema. If we don't add this, Turbulette will assume that <code>number</code> is a string and will annotate the number field as <code>str</code>.
@@ -696,7 +683,6 @@ and offers a convenient way to generate a Pydantic model from a schema type.</p>
 </span><span class="hll">            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Expiration date is invalid&quot;</span><span class="p">)</span>
 </span><span class="hll">        <span class="k">return</span> <span class="n">value</span>
 </span></code></pre></div>
-
 <div class="admonition question">
 <p class="admonition-title">Question</p>
 <p>Why don't we use the <code class="highlight"><span class="nd">@validator</span></code> from Pydantic?</p>
@@ -716,7 +702,6 @@ and offers a convenient way to generate a Pydantic model from a schema type.</p>
 <span class="k">async</span> <span class="k">def</span> <span class="nf">register</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">info</span><span class="p">,</span> <span class="n">valid_input</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;success&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span>
 </code></pre></div>
-
 <p><code>mutation</code> is the base mutation type defined by Turbulette and is used to register all mutation resolvers (hence the use of <code>extend type Mutation</code> on the schema).
 For now, our resolver is very simple and doesn't do any data validation on inputs and doesn't handle errors.</p>
 <p>Turbulette has a <code class="highlight"><span class="nd">@validate</span></code> decorator that can be used to validate resolver input using a pydantic model (like the one defined in <a href="#4-add-pydantic-model">Step 4</a>).</p>
@@ -730,7 +715,6 @@ For now, our resolver is very simple and doesn't do any data validation on input
 </span><span class="hll"><span class="k">async</span> <span class="k">def</span> <span class="nf">register</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">info</span><span class="p">,</span> <span class="n">valid_input</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 </span>    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;success&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span>
 </code></pre></div>
-
 <p>Note the new <code>valid_input</code> param. The <code class="highlight"><span class="nd">@validate</span></code> decorator produces it if the validation succeeds.
 But what happens otherwise? Normally, if the validation fails, pydantic will raise a <code>ValidationError</code>,
 but here the <code class="highlight"><span class="nd">@validate</span></code> decorator handles the exception and will add error messages returned by pydantic into a dedicated error field in the GraphQL response.</p>
@@ -739,7 +723,6 @@ but here the <code class="highlight"><span class="nd">@validate</span></code> de
 <p>Start the server in the root directory (the one containing <code>📁 eshop</code> folder) :</p>
 <div class="highlight"><pre><span></span><code>uvicorn eshop.app:app --port <span class="m">8000</span>
 </code></pre></div>
-
 <p>Now, go to <a href="http://localhost:8000/graphql">http://localhost:8000/graphql</a>, you will see the <a href="https://github.com/graphql/graphql-playground">GraphQL Playground</a> IDE.
 Finally, run the user mutation, for example :</p>
 <div class="highlight"><pre><span></span><code>mutation card {
@@ -755,7 +738,6 @@ Finally, run the user mutation, for example :</p>
   }
 }
 </code></pre></div>
-
 <p>Should give you the following expected result :</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
   <span class="nt">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -766,7 +748,6 @@ Finally, run the user mutation, for example :</p>
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <p>Now, try entering a wrong date (before <em>now</em>). You should see the validation error as expected:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
   <span class="nt">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -779,7 +760,6 @@ Finally, run the user mutation, for example :</p>
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <div class="admonition question">
 <p class="admonition-title">Question</p>
 <p>How the error message end in the <code>errors</code> key?</p>
@@ -823,7 +803,7 @@ This setting indicates the error field on the GraphLQ output type used by Turbul
       <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
         
-          <a href="user-guide/" title="User Guide" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="user-guide/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-footer-nav__title">
               <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
@@ -856,15 +836,15 @@ This setting indicates the error field on the GraphLQ output type used by Turbul
       
     </div>
     
-      <script src="assets/javascripts/vendor.2d1db4bd.min.js"></script>
-      <script src="assets/javascripts/bundle.6627ddf3.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      <script src="assets/javascripts/vendor.6a3d08fc.min.js"></script>
+      <script src="assets/javascripts/bundle.71201edf.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
       
       <script>
         app = initialize({
           base: ".",
           features: ['search.highlight'],
           search: Object.assign({
-            worker: "assets/javascripts/worker/search.5eca75d3.min.js"
+            worker: "assets/javascripts/worker/search.4ac00218.min.js"
           }, typeof search !== "undefined" && search)
         })
       </script>
